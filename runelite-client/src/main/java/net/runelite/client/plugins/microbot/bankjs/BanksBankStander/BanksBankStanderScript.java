@@ -182,6 +182,12 @@ public class BanksBankStanderScript extends Script {
             Rs2Inventory.use(secondItemIdentifier);
         }
 
+        private static String menu;
+        menu = (firstItemId != null ?
+                Microbot.getClientThread().runOnClientThread(() ->
+                        Microbot.getClient().getItemDefinition(firstItemId).getName().toLowerCase().contains("grimy")) :
+                firstItemIdentifier.toLowerCase().contains("grimy")) ? "clean" : "use";
+
         // Introduce some sleeps for synchronization
         sleep(1200);
 
